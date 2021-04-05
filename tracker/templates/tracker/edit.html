@@ -1,0 +1,274 @@
+{% load static %}
+
+<!--DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static '/css/dash.css' %}">
+
+</head>
+<body>
+<div class="sidenav">
+    <h2 style="color:#818181;" >hello, {{user.first_name}} </h2>
+  <a href="#">Profile</a>
+  <a href="http://127.0.0.1:8000/expense">Expenses</a>
+  <a href="http://127.0.0.1:8000/add_expense">Add expense</a>
+  <a href="#">Contact us</a>
+  <a href="http://127.0.0.1:8000/logout">Logout</a>
+</div>
+
+
+
+
+
+
+<div class="distance">
+
+<form action="" method="POST" >
+    {% csrf_token %}
+    <ul class="date"> Date: <input type="date" name="date" ><br></ul>
+     <ul class="food"> Food: <input type="number" min="0" onkeypress="return (event.charCode>=48&&event.charCode<58)" name="food" placeholder="0" value="0"><br></ul>
+     <ul class="shopping"> Shopping: <input type="number" min="0" onkeypress="return (event.charCode>=48&&event.charCode<58)" name="shopping" placeholder="0" value="0"><br></ul>
+     <ul class="travel"> Travel: <input type="number" min="0" onkeypress="return (event.charCode>=48&&event.charCode<58)" name="travel" placeholder="0" value="0"><br></ul>
+     <ul class="others"> Others: <input type="number" min="0" onkeypress="return (event.charCode>=48&&event.charCode<58)" name="others" placeholder="0" value="0"><br></ul>
+
+    <input class="add" type="Submit" placeholder="Add">
+</form>
+
+
+<div class="messages">
+    {% for message in messages %}
+    <b>{{ message }}</b>
+    {% endfor %}
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+</body>
+</html-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Expense Tracker</title>
+
+
+
+    <link rel="stylesheet" href= {% static "https://fonts.googleapis.com/css?family=Open+Sans:400,600" %} />
+    <link rel="stylesheet" href={% static '/css/all.min.css'%} />
+    <link rel="stylesheet" href={% static '/css/bootstrap.min.css'%} />
+    <link rel="stylesheet" href={% static '/slick/slick.css' %} />
+    <link rel="stylesheet" href={% static 'slick/slick-theme.css' %}/>
+    <link rel="stylesheet" href={% static 'css/magnific-popup.css'%}/>
+    <link rel="stylesheet" href={% static 'css/templatemo-dream-pulse.css' %} />
+  </head>
+  <body>
+  <style>.tm-brand {
+    font-size: 2rem;
+}</style>
+    <main class="container-fluid">
+      <div class="row">
+          <nav id="tmSidebar" class="tm-bg-black-transparent tm-sidebar">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="tm-sidebar-sticky">
+              <div class="tm-brand-box">
+                <div class="tm-double-border-1">
+                  <div class="tm-double-border-2">
+                    <h1 class="tm-brand text-uppercase">Expense tracker</h1>
+                  </div>
+                </div>
+              </div>
+
+<h5 style="color:white; font-weight:bold; margin-left:-145px;">Hi,{{user.username}} </h5>
+              <ul id="tmMainNav" class="nav flex-column text-uppercase text-right tm-main-nav">
+
+                <li class="nav-item">
+
+                  <a href="/profile" class="nav-link active">
+                    <span class="d-inline-block mr-3">Profile</span>
+                    <span class="d-inline-block tm-white-rect"></span>
+                  </a>
+                </li>
+                  <li class="nav-item">
+                  <a href="/home" class="nav-link">
+                    <span class="d-inline-block mr-3">Dashboard</span>
+                    <span class="d-inline-block tm-white-rect"></span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/expense" class="nav-link">
+                    <span class="d-inline-block mr-3">Expenses</span>
+                    <span class="d-inline-block tm-white-rect"></span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/add_expense" class="nav-link">
+                    <span class="d-inline-block mr-3">Add Expense</span>
+                    <span class="d-inline-block tm-white-rect"></span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="/logout" class="nav-link">
+                    <span class="d-inline-block mr-3">Logout</span>
+                    <span class="d-inline-block tm-white-rect"></span>
+                  </a>
+                </li>
+
+              </ul>
+                <footer class="text-center text-white small">
+                <p class="mb--0 mb-2">Connect With Us</p>
+
+              </footer>
+              <ul class="nav flex-row tm-social-links">
+                <li class="nav-item">
+                  <a href="https://facebook.com" class="nav-link tm-social-link">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://twitter.com" class="nav-link tm-social-link">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://dribbble.com" class="nav-link tm-social-link">
+                    <i class="fab fa-dribbble"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://linkedin.com" class="nav-link tm-social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                </li>
+              </ul>
+
+            </div>
+          </nav>
+
+          <main role="main" class="ml-sm-auto col-12">
+            <div
+              class="parallax-window"
+              data-parallax="scroll"
+              data-image-src={% static 'img/dream-pulse-header.jpg' %}>
+              <div class="tm-section-wrap">
+                <section id="intro" class="tm-section">
+                  <div class="tm-bg-white-transparent tm-intro" style="background-color:rgba(169,169,169,0.5)">
+                        <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary  " style="text-align:center; color:black; font-weight:bold;">Edit Expense</h2>
+                        <p class="tm-color-gray">
+
+                            <style>
+
+                                .typebox{
+  width: 100%;
+
+  overflow:hidden;
+  font-size: 20px;
+  padding: 8px 0;
+  margin: 8px 0;
+
+  border-bottom: 1px solid #4caf50;
+}
+
+.typebox input{
+  border none;
+  font-weight: bold;
+  outline: none;
+  background: none;
+  color : black;
+  font-size: 14px;
+  width: 80%;
+
+  margin: 10px;
+
+}
+::placeholder{
+  color: black;
+
+  }
+
+
+
+.bt{
+  width: 100%;
+  background: #4caf50;
+  border: 2px solid #4caf50;
+  color: black;
+  padding: 5px;
+  font-size: 18px;
+  cursor: pointer;
+
+}
+
+
+
+
+ </style>
+
+                        </p><form action="" method="POST">
+
+                                {% csrf_token %}
+                                <div class="typebox">
+                                    <style>.nowrap {
+  white-space: nowrap ;
+  font-weight: bold;
+   color : black;
+}</style>
+
+                                    <label style="color:black; font-weight:bold; font-size:25px;">Date: {{dat.date}}</label> <br><br>
+
+                                    <span class="nowrap">Food:<input type="number" min="0" onkeypress="return (event.charCode>=48&&event.charCode<58)" name="food" placeholder="Food" value="{{dat.food}}" ></span><br><br>
+                                    <span class="nowrap">Shopping:<input type="number" min="0" onkeypress="return (event.charCode>=48&&event.charCode<58)" name="shopping" placeholder="Shopping" value="{{dat.shopping}}" ></span><br><br>
+                                    <span class="nowrap">Travel:<input type="number" min="0" onkeypress="return (event.charCode>=48&&event.charCode<58)" name="travel" placeholder="Travel" value="{{dat.travel}}" ></span><br><br>
+                                    <span class="nowrap">Others:<input type="number" min="0" onkeypress="return (event.charCode>=48&&event.charCode<58)" name="others" placeholder="Others" value="{{dat.others}}" ></span><br><br>
+
+
+                                </div>
+
+
+                                <input class="bt" type="Submit" value="Save Changes">
+
+
+
+                        </form>
+
+                          <br>
+                          <div class="messages" style="color:black; font-weight:bold; text-align:center">
+                          {% for message in messages %}
+                          <b>{{ message }}</b>
+                          {% endfor %}
+                          </div>
+
+
+                    </div>
+
+                </section>
+            </div>
+          </div>
+
+
+   <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.singlePageNav.min.js' %}"></script>
+    <script src="{% static 'js/parallax.min.js' %}"></script>
+    <script src="{% static 'slick/slick.min.js' %}"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/templatemo-scripts.js"></script>
+  </body>
+</html>
+
